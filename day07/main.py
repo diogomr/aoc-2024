@@ -25,14 +25,7 @@ def part1():
         test_value = int(test_value)
         columns = list(map(int, columns.split(" ")))
 
-        ops = []
-        for prod in itertools.product(["+", "*"], repeat=len(columns) - 1):
-            op = []
-            for idx in range(len(columns) - 1):
-                op.append(prod[idx])
-
-            ops.append(op)
-
+        ops = [list(op) for op in itertools.product(["+", "*"], repeat=len(columns) - 1)]
         for op in ops:
             if calc(columns, op) == test_value:
                 ans += test_value
@@ -50,14 +43,7 @@ def part2():
         test_value = int(test_value)
         columns = list(map(int, columns.split(" ")))
 
-        ops = []
-        for prod in itertools.product(["+", "*", "||"], repeat=len(columns) - 1):
-            op = []
-            for idx in range(len(columns) - 1):
-                op.append(prod[idx])
-
-            ops.append(op)
-
+        ops = [list(op) for op in itertools.product(["+", "*", "||"], repeat=len(columns) - 1)]
         for op in ops:
             if calc(columns, op) == test_value:
                 ans += test_value
